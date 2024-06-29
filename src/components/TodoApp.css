@@ -6,10 +6,8 @@
 .todo-container{
      
     width: 100vh;
-     position: absolute;
-     left: 50%;
-     top: 50%;
-     transform: translate(-50%, -50%);
+     margin: auto;
+     margin-top: 30px;
      text-align: center;
       align-items: center;
 }
@@ -47,6 +45,7 @@ li{
 ul li i{
     text-align: right;
     flex: 1;
+    cursor: pointer;
 }
 ul li{
     list-style: none;

@@ -17,11 +17,20 @@ export default class TodoApp extends Component {
       
     }
 
+deletItem =(index)=>{
+    const allItems=this.state.items;
+    allItems.splice(index,1);
+   this.setState({
+     Items:allItems
+   })
+};
+
 storeItem=(eve)=>{
      eve.preventDefault();
      const {input} = this.state;
      this.setState({
-     items:[...this.state.items,input]
+     items:[...this.state.items,input],
+     input:""
     });
     };
 
@@ -32,12 +41,12 @@ storeItem=(eve)=>{
  
         <form className='input-section'onSubmit={this.storeItem}>
         <h1>Todo App</h1>
-            <input type="text" value={input} onChange={this.handleChange} placeholder='Enter...'/>
-            <Button>ADD</Button>
+            <input type="text" value={input} onChange={this.handleChange} placeholder='Enter...' required/>
+            <Button type="submit" onClick={this.storeItem}>ADD</Button>
         </form>
         <ul>
             {items.map((data,index)=>(
-            <li key={index}>{data} <i className='bi bi-x-lg'></i></li>
+            <li key={index}>{data} <i className='bi bi-x-lg'  onClick={()=>this.deletItem(index)}></i></li>
             ))}
         </ul>
       </div>
