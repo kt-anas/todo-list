@@ -1,56 +1,43 @@
-import React, { Component } from 'react'
- import "./TodoApp.css"
-import { Button} from 'react-bootstrap'
-import "bootstrap-icons/font/bootstrap-icons.css"
-export default class TodoApp extends Component {
-   //?useState 
-  
-    state = {
-        input:"",
-        items:[]
-    }
-      
-    handleChange =(event)=>{
-        this.setState({
-            input:event.target.value
-        });
-      
-    }
+import React, { useState } from 'react';
+import "./TodoApp.css";
+import { Button } from 'react-bootstrap';
+import "bootstrap-icons/font/bootstrap-icons.css";
 
-deletItem =(index)=>{
-    const allItems=this.state.items;
-    allItems.splice(index,1);
-   this.setState({
-     Items:allItems
-   })
+const TodoApp = () => {
+  const [input, setInput] = useState("");
+  const [items, setItems] = useState([]);
+
+  const handleChange = (event) => {
+    setInput(event.target.value);
+  };
+
+  const deleteItem = (index) => {
+    const allItems = items.filter((_, i) => i !== index);
+    setItems(allItems);
+  };
+
+  const storeItem = (eve) => {
+    eve.preventDefault();
+    setItems([...items, input]);
+    setInput("");
+  };
+
+  return (
+    <div className='todo-container'>
+      <form className='input-section' onSubmit={storeItem}>
+        <h1>Todo App</h1>
+        <input type="text" value={input} onChange={handleChange} placeholder='Enter...' required />
+        <Button type="submit">ADD</Button>
+      </form>
+      <ul>
+        {items.map((data, index) => (
+          <li key={index}>
+            {data} <i className='bi bi-x-lg' onClick={() => deleteItem(index)}></i>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
-storeItem=(eve)=>{
-     eve.preventDefault();
-     const {input} = this.state;
-     this.setState({
-     items:[...this.state.items,input],
-     input:""
-    });
-    };
-
-  render() {
-    const {input,items} = this.state;
-    return(
-       <div className='todo-container'>
- 
-        <form className='input-section'onSubmit={this.storeItem}>
-        <h1>Todo App</h1>
-            <input type="text" value={input} onChange={this.handleChange} placeholder='Enter...' required/>
-            <Button type="submit" onClick={this.storeItem}>ADD</Button>
-        </form>
-        <ul>
-            {items.map((data,index)=>(
-            <li key={index}>{data} <i className='bi bi-x-lg'  onClick={()=>this.deletItem(index)}></i></li>
-            ))}
-        </ul>
-      </div>
-    )
-
-  }
-}
+export default TodoApp;
