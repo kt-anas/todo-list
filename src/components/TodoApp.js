@@ -12,7 +12,7 @@ const TodoApp = () => {
   };
 
   const deleteItem = (index) => {
-    const allItems = items.filter((_, i) => i !== index);
+    const allItems = items.filter((data,ind) => ind!== index); 
     setItems(allItems);
   };
 
