@@ -1,6 +1,6 @@
  body{
     margin: 0;
-    background-color: aqua;
+    background-color:#ababab;
  }
  
 .todo-container{
@@ -14,18 +14,21 @@
 h1{
     margin: 0;
     margin-bottom: 15px;
-    color: #ababab;
+    color: #302121;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .input-section{
-    background-color: #ececec;
+    background-color: #fafafa;
      padding: 15px;
      border-radius: 10px;
      padding-top: 50px;
     margin-bottom: 20px;
+     
+    box-shadow: 9px 5px 19px 0px rgba(0,0,0,0.7);
 }
 .input-section input{
     border-radius: 5px;
-    border: 1px solid silver;
+    border: 2px solid silver;
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
@@ -33,7 +36,7 @@ h1{
     margin-bottom: 10px;
 }
 input::placeholder{
-    color: silver;
+    color: rgb(101, 94, 94);
 }
 ul{
     text-align: left;
@@ -47,11 +50,22 @@ ul li i{
     flex: 1;
     cursor: pointer;
 }
+ul li i:hover{
+   color: black;
+}
 ul li{
     list-style: none;
      background-color: aliceblue;
+     
      padding: 15px;
      border-radius: 5px;
      margin-bottom: 10px;
      color: gray;
+     box-shadow: 9px 5px 19px 0px rgba(0,0,0,0.7);
+    
+}
+ul li:hover{
+    text-decoration: underline;
+    color:#302121;
+    font-size: larger;
 }

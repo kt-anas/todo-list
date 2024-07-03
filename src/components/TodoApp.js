@@ -27,7 +27,7 @@ const TodoApp = () => {
       <form className='input-section' onSubmit={storeItem}>
         <h1>Todo App</h1>
         <input type="text" value={input} onChange={handleChange} placeholder='Enter...' required />
-        <Button type="submit">ADD</Button>
+        <Button type="submit" class="btn btn-dark" value="Submit">ADD</Button>
       </form>
       <ul>
         {items.map((data, index) => (
